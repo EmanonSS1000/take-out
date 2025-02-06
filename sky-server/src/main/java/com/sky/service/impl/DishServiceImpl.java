@@ -96,22 +96,22 @@ public class DishServiceImpl implements DishService {
     }
 
     /**
-     * 根据id查询菜品
+     * 根据id查询菜品和對應的口味數據
      *
      * @param id
      * @return
      */
     @Override
     public DishVO getByIdWithFlavor(Long id) {
-        //根据菜品id查询菜品
+        //根据菜品id查询菜品数据
         Dish dish = dishMapper.selectById(id);
         //根据菜品id查询菜品的口味数据
-        List<DishFlavor> flavors = dishFlavorMapper.selectById(id);
+        List<DishFlavor> dishFlavors = dishFlavorMapper.getByDishId(id);
 
         //把菜品数据和口味数据封装成一个DishVO对象
         DishVO dishVO = new DishVO();
         BeanUtils.copyProperties(dish, dishVO);
-        dishVO.setFlavors(flavors);
+        dishVO.setFlavors(dishFlavors);
         return dishVO;
     }
 
@@ -211,7 +211,7 @@ public class DishServiceImpl implements DishService {
             BeanUtils.copyProperties(d,dishVO);//为每一个DishVO对象赋值
 
             //根据菜品id查询菜品对应的口味集合
-            List<DishFlavor> dishFlavors = dishFlavorMapper.selectById(d.getId());
+            List<DishFlavor> dishFlavors = dishFlavorMapper.getByDishId(d.getId());
 
             dishVO.setFlavors(dishFlavors);//为DishVO对象的口味集合赋值
             dishVOList.add(dishVO);//把封装好的DishVO对象加入到集合中

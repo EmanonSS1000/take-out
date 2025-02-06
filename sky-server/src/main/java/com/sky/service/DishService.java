@@ -28,7 +28,7 @@ public interface DishService {
     void startOrStop(Integer status,Long id);
 
     /**
-     * 根据id查询菜品
+     * 根据id查询菜品和對應的口味數據
      * @param id
      * @return
      */
