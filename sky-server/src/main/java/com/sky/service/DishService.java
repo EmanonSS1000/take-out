@@ -19,7 +19,7 @@ public interface DishService {
      * 菜品分页查询
      * @return
      */
-    PageResult page(DishPageQueryDTO dishPageQueryDTO);
+    PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
     /**
      * 菜品起售停售

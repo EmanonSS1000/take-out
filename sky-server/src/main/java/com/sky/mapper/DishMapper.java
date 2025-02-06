@@ -36,7 +36,7 @@ public interface DishMapper {
      * @param dishPageQueryDTO
      * @return
      */
-    Page<DishVO> page(DishPageQueryDTO dishPageQueryDTO);
+    Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
     /**
      * 更新菜品数据
