@@ -37,3 +37,7 @@ sky:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+  gcs:
+    endpoint: ${sky.gcs.endpoint}
+    bucket-name: ${sky.gcs.bucket-name}
+    service-account-json: ${sky.gcs.service-account-json}

@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: Root
+  gcs:
+    endpoint: https://storage.googleapis.com
+    bucket-name: sky-itcast
+    service-account-json: ${GOOGLE_APPLICATION_CREDENTIALS}c
+
