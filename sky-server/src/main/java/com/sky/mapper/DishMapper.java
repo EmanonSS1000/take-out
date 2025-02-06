@@ -55,6 +55,7 @@ public interface DishMapper {
 
     /**
      * 批量删除菜品
+     * 根據主鍵刪除菜品數據
      * @param id
      */
     @Delete("delete from dish where id = #{id}")
@@ -81,4 +82,14 @@ public interface DishMapper {
      * @return
      */
     Integer countByMap(Map map);
+
+    /**
+     * 根據菜品id集合批量刪除菜品
+     * @param ids
+     */
+    void deleteByIds(List<Long> ids);
+
+
+
+
 }
