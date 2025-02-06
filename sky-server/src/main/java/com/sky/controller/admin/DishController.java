@@ -73,7 +73,7 @@ public class DishController {
         dishService.deleteBatch(ids);
 
         //清除所有的菜品缓存数据,所有以dish_开头的key
-        //cleanCache("dish_*");
+        cleanCache("dish_*");
 
         return Result.success();
     }
@@ -102,7 +102,7 @@ public class DishController {
         dishService.updateWithFlavor(dishDTO);
 
         //清除所有的菜品缓存数据,所有以dish_开头的key
-        //cleanCache("dish_*");
+        cleanCache("dish_*");
 
         return Result.success();
     }
