@@ -10,4 +10,8 @@ sky:
     endpoint: https://storage.googleapis.com
     bucket-name: sky-itcast
     service-account-json: ${GOOGLE_APPLICATION_CREDENTIALS}c
+  redis:
+    host: localhost
+    port: 6379
 
+    database: 10

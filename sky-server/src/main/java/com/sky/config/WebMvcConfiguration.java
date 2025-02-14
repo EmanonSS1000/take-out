@@ -47,7 +47,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * @return
      */
     @Bean
-    public Docket docket() {
+    public Docket docket_admin() {
         log.info("準備生成接口文檔...");
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("蒼芎外賣項目接口文檔 ")
@@ -55,9 +55,28 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .description("苍穹外卖项目接口文档")
                 .build();
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("管理端接口")
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.sky.controller.admin"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
+
+    @Bean
+    public Docket docket_user() {
+        log.info("準備生成接口文檔...");
+        ApiInfo apiInfo = new ApiInfoBuilder()
+                .title("蒼芎外賣項目接口文檔 ")
+                .version("2.0")
+                .description("苍穹外卖项目接口文档")
+                .build();
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .groupName("用戶端接口")
+                .apiInfo(apiInfo)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.sky.controller.user"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
