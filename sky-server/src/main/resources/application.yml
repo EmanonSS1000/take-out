@@ -42,7 +42,16 @@ sky:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-secret-key: itline
+    user-ttl: 7200000
+    user-token-name: authentication
   gcs:
     endpoint: ${sky.gcs.endpoint}
     bucket-name: ${sky.gcs.bucket-name}
     service-account-json: ${sky.gcs.service-account-json}
+  line:
+    bot:
+      channel-id: ${sky.gcs.channel-id}
+      channel-token: ${sky.gcs.channel-token}
+      channel-secret: ${sky.gcs.channel-secret}
+

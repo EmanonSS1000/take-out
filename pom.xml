@@ -128,6 +128,17 @@
                 <artifactId>google-cloud-storage</artifactId>
                 <version>2.45.0</version> <!-- 使用最新版本 -->
             </dependency>
+            <dependency>
+                <groupId>com.linecorp.bot</groupId>
+                <artifactId>line-bot-api-client</artifactId>
+                <version>6.0.0</version> <!-- 使用當前最新版本 -->
+            </dependency>
+            <!-- HttpClient-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.13</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

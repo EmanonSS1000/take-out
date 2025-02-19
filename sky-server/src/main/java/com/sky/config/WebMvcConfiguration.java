@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -105,5 +106,13 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         converter.setObjectMapper(new JacksonObjectMapper());
         //将自己的消息转换器加入到转化器的容器中,添加索引确保容器优先使用我们自己定义的消息转换器
         converters.add(0,converter);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://5e25-2407-4b00-1c0a-8417-6c4d-b10b-76cf-5ee4.ngrok-free.app") // 設定允許跨域的來源
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // 設定允許的請求方法
+                .allowedHeaders("*"); // 設定允許的請求頭部
     }
 }
