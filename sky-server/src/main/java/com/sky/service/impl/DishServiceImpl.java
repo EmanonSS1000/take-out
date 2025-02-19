@@ -203,7 +203,7 @@ public class DishServiceImpl implements DishService {
      * @return
      */
     @Override
-    public List<DishVO> listWitnFlavor(Dish dish) {
+    public List<DishVO> listWithFlavor(Dish dish) {
         List<Dish> dishList = dishMapper.list(dish);//查询菜品表
         List<DishVO> dishVOList = new ArrayList<>();
         for (Dish d : dishList) {

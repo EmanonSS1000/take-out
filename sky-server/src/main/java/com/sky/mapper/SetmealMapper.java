@@ -60,7 +60,7 @@ public interface SetmealMapper {
     void deleteById(Long id);
 
     /**
-     * 动态条件查询菜品信息
+     * 动态条件查询套餐
      * @param setmeal
      * @return
      */
