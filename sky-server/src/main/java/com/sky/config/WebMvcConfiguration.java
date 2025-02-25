@@ -111,7 +111,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://5e25-2407-4b00-1c0a-8417-6c4d-b10b-76cf-5ee4.ngrok-free.app") // 設定允許跨域的來源
+                .allowedOrigins("https://a5b9-2407-4b00-1c0a-8417-8dfd-d27f-2c9b-706d.ngrok-free.app", "http://127.0.0.1") // 設定允許跨域的來源
+                //.allowedOrigins("http://127.0.0.1")
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // 設定允許的請求方法
                 .allowedHeaders("*"); // 設定允許的請求頭部
     }

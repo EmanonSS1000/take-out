@@ -63,6 +63,24 @@ public class DishController {
     }
 
     /**
+     * 菜品起售停售
+     *
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("菜品起售停售")
+    public Result startOrStop(@PathVariable Integer status, Long id) {
+        log.info("菜品起售停售:{},{}", status, id);
+        dishService.startOrStop(status, id);
+
+        //清除所有的菜品缓存数据,所有以dish_开头的key
+        cleanCache("dish_*");
+
+        return Result.success();
+    }
+
+
+    /**
      * 批量删除菜品
      * @param ids
      * @return
