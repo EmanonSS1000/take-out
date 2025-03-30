@@ -1,6 +1,7 @@
 package com.sky.config;
 
 import com.sky.interceptor.JwtTokenAdminInterceptor;
+import com.sky.interceptor.JwtTokenUserInterceptor;
 import com.sky.json.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     @Autowired
     private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
+    @Autowired
+    private JwtTokenUserInterceptor jwtTokenUserInterceptor;
 
     /**
      * 注册自定义拦截器
@@ -41,6 +44,11 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addInterceptor(jwtTokenAdminInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/employee/login");
+        registry.addInterceptor(jwtTokenUserInterceptor)
+                .addPathPatterns("/user/**")
+                .excludePathPatterns("/user/user/login")//放行用户登录
+                .excludePathPatterns("/user/shop/status");//放行查询店铺状态的请求
+
     }
 
     /**
@@ -111,9 +119,10 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://a5b9-2407-4b00-1c0a-8417-8dfd-d27f-2c9b-706d.ngrok-free.app", "http://127.0.0.1") // 設定允許跨域的來源
-                //.allowedOrigins("http://127.0.0.1")
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // 設定允許的請求方法
-                .allowedHeaders("*"); // 設定允許的請求頭部
+                .allowedOriginPatterns("https://d67d-2407-4b00-1c0a-8417-10cd-fcca-7e05-7495.ngrok-free.app", "http://127.0.0.1") // 允許所有來源，適用於有 allowCredentials(true)
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type")
+                .allowCredentials(true);
+
     }
 }
