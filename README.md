@@ -566,7 +566,7 @@ public class GcsUtil {
 }
 ```
 
-4.定義OSS配置類，把阿裡雲OSS工具類做成Bean交給Spring管理
+4.定義gcS配置類，把google cloud storag工具類做成Bean交給Spring管理
 
 ```java
 @Configuration
@@ -583,11 +583,11 @@ public class GcsConfiguration {
 }
 ```
 
-該功能可以把本地的圖片上傳到阿裡雲，通過後端進行圖片位址的拼接後回應給前端，前端可以通過直接訪問該位址或者通過查詢資料庫得到該位址再訪問該位址來顯示圖片，同時把位址保存到資料庫，從而實現了本地檔的上傳。
+該功能可以把本地的圖片上傳到google cloud storag，通過後端進行圖片位址的拼接後回應給前端，前端可以通過直接訪問該位址或者通過查詢資料庫得到該位址再訪問該位址來顯示圖片，同時把位址保存到資料庫，從而實現了本地檔的上傳。
 
 ### 2.2 點餐業務模組重點
 
-#### 2.2.1 基於HttpClient實現小程式微信登錄
+#### 2.2.1 基於HttpClient實現line登錄
 
 1.定義HttpClient工具類
 
@@ -799,7 +799,7 @@ public class UserServiceImpl implements UserService {
 }
 ```
 
-這兩段代碼實現微信登錄的步驟：
+這兩段代碼實現Line登錄的步驟：
 
 1. 前端（如 Web 或 App）呼叫 LINE 授權介面，跳轉用戶至 LINE 授權頁面。
 
